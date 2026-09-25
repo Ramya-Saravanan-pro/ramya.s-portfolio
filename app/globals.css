@@ -1,26 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #fbf9f5;
+  --lilac: #b8a1d9;
+  --deep-lilac: #8064a8;
+  --soft-lilac: #e9e1f3;
+  --plum: #241b2d;
+  --muted: #756d7c;
+  --line: #ded5e7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--cream);
+  color: var(--plum);
+  font-family: "DM Sans", sans-serif;
+}
+
+::selection {
+  background: var(--lilac);
+  color: var(--plum);
+}
+
+.font-serif {
+  font-family: "DM Serif Display", serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lilac);
+  border-radius: 999px;
 }
