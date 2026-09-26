@@ -49,7 +49,7 @@ export default function Footer() {
               </p>
 
               <a
-                href="mailto:ramya.s.mca24@gmail.com"
+                href="mailto:connectwithramya.s@gmail.com"
                 className="group block w-fit"
               >
                 <h2
@@ -80,7 +80,7 @@ export default function Footer() {
                     className="text-sm transition-colors duration-300 group-hover:text-[var(--lilac)]"
                     style={{ color: "var(--cream)" }}
                   >
-                    ramya.s.mca24@gmail.com
+                    connectwithramya.s@gmail.com
                   </span>
                 </div>
               </a>
