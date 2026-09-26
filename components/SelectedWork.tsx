@@ -31,7 +31,6 @@ const works: Work[] = [
     solved:
       "Created a complete web experience to present the brand, services and work in a clear, engaging way.",
   },
-
   {
     number: "02",
     title: "Droog AI",
@@ -65,7 +64,6 @@ const works: Work[] = [
       { label: "Message Feedback", value: "193" },
     ],
   },
-
   {
     number: "03",
     title: "CourseFind",
@@ -84,7 +82,6 @@ const works: Work[] = [
       "Built a searchable course discovery experience that brings together structured university and course information into one platform. The system supports multiple filters and course attributes, provides localized tuition-fee display based on the user's country context, and gives users detailed course information before sending them to the university or course website. I also worked on analytics and search monitoring to understand how users discover the platform and improve its visibility through organic search.",
     url: "https://search.coursefind.app",
   },
-
   {
     number: "04",
     title: "EduVerifi",
@@ -96,12 +93,11 @@ const works: Work[] = [
       "Designed and implemented the complete user-facing UI for the EduVerifi website, including the hero section, verification record presentation, EduPassport section, security-focused sections, service categories, benefits, FAQ area, authorised verification sources, and supporting footer content. The main focus was making a complex verification product easy to understand while maintaining a professional and trustworthy visual experience across the website.",
     url: "https://portal.eduverifi.com",
   },
-
   {
     number: "05",
     title: "ZEE5 Contest",
     category: "Campaign / Contest Platform",
-    stack: ["React, Supabase"],
+    stack: ["React", "Supabase"],
     description:
       "A promotional giveaway platform created for the Jana Nayagan campaign on ZEE5. The website was designed to let viewers participate in the giveaway by submitting their personal details, ZEE5 registered account information, and a screenshot confirming their participation. I worked on the user-facing campaign experience as well as the entry management dashboard, creating a structured flow from the campaign landing page to giveaway submission and entry management. The campaign interface included a hero section, giveaway messaging, participant form, screenshot upload, terms confirmation, and submission flow, while the dashboard provided an overview of submitted entries and their details.",
     solved:
@@ -114,7 +110,6 @@ const works: Work[] = [
     ],
     url: "https://jananayagancontest.com",
   },
-
   {
     number: "06",
     title: "LadyO",
@@ -177,7 +172,9 @@ export default function SelectedWork() {
             >
               Things I&apos;ve
               <br />
-              <span style={{ color: "var(--deep-lilac)" }}>worked on.</span>
+              <span style={{ color: "var(--deep-lilac)" }}>
+                worked on.
+              </span>
             </motion.h2>
           </div>
 
@@ -190,12 +187,9 @@ export default function SelectedWork() {
           </p>
         </div>
 
-        <div
-          className="border-t"
-          style={{ borderColor: "var(--line)" }}
-        >
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {works.map((work, index) => (
-            <WorkRow
+            <WorkCard
               key={work.number}
               work={work}
               index={index}
@@ -227,7 +221,7 @@ export default function SelectedWork() {
   );
 }
 
-function WorkRow({
+function WorkCard({
   work,
   index,
   onOpen,
@@ -240,80 +234,66 @@ function WorkRow({
     <motion.button
       type="button"
       onClick={onOpen}
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.65,
-        delay: index * 0.05,
+        duration: 0.6,
+        delay: index * 0.06,
       }}
-      className="group relative w-full cursor-pointer border-b text-left"
-      style={{ borderColor: "var(--line)" }}
+      whileHover={{ y: -6 }}
+      className="group relative min-h-[260px] overflow-hidden rounded-[28px] border p-7 text-left transition-all duration-500 md:min-h-[300px] md:p-8"
+      style={{
+        borderColor: "var(--line)",
+        backgroundColor: "rgba(255,255,255,0.28)",
+      }}
     >
       <div
-        className="absolute inset-0 origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+        className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background:
-            "linear-gradient(90deg, var(--soft-lilac), rgba(233,225,243,.2), transparent)",
+            "linear-gradient(135deg, var(--soft-lilac), transparent 70%)",
         }}
       />
 
-      <div className="relative grid items-center gap-5 py-7 md:grid-cols-12 md:gap-6 md:py-9">
-        <span
-          className="text-[10px] tracking-[0.18em] transition-transform duration-500 group-hover:translate-x-1 md:col-span-1"
-          style={{ color: "var(--muted)" }}
-        >
-          {work.number}
-        </span>
-
-        <div className="md:col-span-6">
-          <motion.h3
-            whileHover={{ x: 10 }}
-            transition={{
-              duration: 0.4,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="font-serif leading-none tracking-[-0.035em] transition-colors duration-300 group-hover:text-[var(--deep-lilac)]"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 4rem)",
-            }}
+      <div className="relative flex h-full min-h-[205px] flex-col justify-between md:min-h-[245px]">
+        <div className="flex items-start justify-between">
+          <span
+            className="text-[10px] tracking-[0.2em]"
+            style={{ color: "var(--muted)" }}
           >
-            {work.title}
-          </motion.h3>
+            {work.number}
+          </span>
         </div>
 
-        <div className="md:col-span-4">
+        <div>
           <p
-            className="text-[10px] uppercase tracking-[0.16em]"
+            className="mb-4 text-[9px] uppercase tracking-[0.18em]"
             style={{ color: "var(--muted)" }}
           >
             {work.category}
           </p>
 
-          <span
-            className="mt-2 block text-[9px] uppercase tracking-[0.18em] opacity-0 transition-all duration-500 group-hover:opacity-45"
-            style={{ color: "var(--plum)" }}
-          >
-            Click here to know more details
-          </span>
-        </div>
-
-        <div className="flex md:col-span-1 md:justify-end">
-          <motion.span
-            whileHover={{
-              rotate: 45,
-              scale: 1.08,
+          <h3
+            className="font-serif leading-[0.95] tracking-[-0.04em] transition-colors duration-300 group-hover:text-[var(--deep-lilac)]"
+            style={{
+              fontSize: "clamp(2.2rem, 4vw, 3.8rem)",
             }}
-            transition={{ duration: 0.3 }}
-            className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-400 group-hover:border-[var(--deep-lilac)] group-hover:bg-[var(--plum)] group-hover:text-[var(--cream)]"
-            style={{ borderColor: "var(--line)" }}
           >
+            {work.title}
+          </h3>
+
+          <div
+            className="mt-6 flex items-center gap-2 text-[9px] uppercase tracking-[0.16em]"
+            style={{ color: "var(--muted)" }}
+          >
+            Click to explore
             <ArrowUpRight
-              size={16}
+              size={13}
               strokeWidth={1.5}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
-          </motion.span>
+          </div>
         </div>
       </div>
     </motion.button>
@@ -347,7 +327,7 @@ function WorkModal({
           ease: [0.16, 1, 0.3, 1],
         }}
         onClick={(event) => event.stopPropagation()}
-        className="project-modal-scroll relative my-5 max-h-[90vh] w-full max-w-[950px] overflow-y-auto overscroll-contain rounded-[32px] p-7 md:my-10 md:p-10"
+        className="project-modal-scroll relative h-[85vh] w-full max-w-[950px] overflow-y-auto overscroll-contain rounded-[32px] p-7 md:p-10"
         style={{
           backgroundColor: "var(--cream)",
           color: "var(--plum)",
@@ -433,54 +413,63 @@ function WorkModal({
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            {work.analytics && (
-              <button
-                type="button"
-                onClick={onOpenAnalytics}
-                className="group inline-flex items-center gap-3 rounded-full border px-5 py-3 text-[10px] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  borderColor: "var(--line)",
-                  color: "var(--plum)",
-                }}
-              >
-                <BarChart3
-                  size={15}
-                  strokeWidth={1.5}
-                  className="transition-transform duration-300 group-hover:scale-110"
-                />
-                View analytics
-              </button>
-            )}
+          <div
+            className="mt-10 flex flex-col gap-4 border-t pt-7 md:flex-row md:items-center md:justify-between"
+            style={{ borderColor: "var(--line)" }}
+          >
+            <div className="flex flex-wrap items-center gap-3">
+              {work.analytics && (
+                <button
+                  type="button"
+                  onClick={onOpenAnalytics}
+                  className="group inline-flex items-center gap-3 rounded-full border px-5 py-3 text-[10px] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    borderColor: "var(--line)",
+                    color: "var(--plum)",
+                  }}
+                >
+                  <BarChart3
+                    size={15}
+                    strokeWidth={1.5}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                  View analytics
+                </button>
+              )}
 
-            {work.url && (
-              <a
-                href={work.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-full px-5 py-3 text-[10px] uppercase tracking-[0.18em]"
-                style={{
-                  backgroundColor: "var(--plum)",
-                  color: "var(--cream)",
-                }}
-              >
-                View live project
-                <ArrowUpRight
-                  size={15}
-                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
-            )}
+              {work.url && (
+                <a
+                  href={work.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 rounded-full px-5 py-3 text-[10px] uppercase tracking-[0.18em]"
+                  style={{
+                    backgroundColor: "var(--plum)",
+                    color: "var(--cream)",
+                  }}
+                >
+                  View live project
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              )}
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex shrink-0 items-center justify-center rounded-full border px-5 py-3 text-[10px] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                borderColor: "var(--line)",
+                color: "var(--plum)",
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
-
-        <style jsx>{`
-          .project-modal-scroll::-webkit-scrollbar {
-            display: none;
-            width: 0;
-            height: 0;
-          }
-        `}</style>
       </motion.div>
     </motion.div>
   );
@@ -500,7 +489,7 @@ function AnalyticsModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto p-5 md:p-10"
+      className="fixed inset-0 z-[120] flex items-center justify-center overflow-hidden p-5 md:p-10"
       style={{ backgroundColor: "rgba(36,27,45,.82)" }}
       onClick={onClose}
     >
@@ -513,10 +502,14 @@ function AnalyticsModal({
           ease: [0.16, 1, 0.3, 1],
         }}
         onClick={(event) => event.stopPropagation()}
-        className="relative my-5 w-full max-w-[950px] overflow-hidden rounded-[32px]"
+        className="analytics-modal-scroll relative h-[85vh] w-full max-w-[950px] overflow-y-auto rounded-[32px]"
         style={{
           backgroundColor: "var(--cream)",
           color: "var(--plum)",
+          WebkitOverflowScrolling: "touch",
+          touchAction: "pan-y",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
         }}
       >
         <div
@@ -624,6 +617,19 @@ function AnalyticsModal({
             </button>
           </div>
         </div>
+
+        <style jsx>{`
+          .analytics-modal-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+
+          .analytics-modal-scroll::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+          }
+        `}</style>
       </motion.div>
     </motion.div>
   );

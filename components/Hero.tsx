@@ -447,7 +447,7 @@ export default function Hero() {
             </AnimatePresence>
           </div>
 
-          <div className="relative h-[390px] md:col-span-5 md:h-[570px]">
+          <div className="hidden md:relative md:block md:h-[570px] md:col-span-5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
